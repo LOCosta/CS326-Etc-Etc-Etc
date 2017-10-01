@@ -1,0 +1,116 @@
+body {
+    background-color: lightgray;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+button {
+    margin: 4px 0px 4px 0px;
+}
+
+.jumbotron {
+    background-color: slategray;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+.navbar-default {
+    background: #000000;
+    background-color: darkslategray;
+    color: darkslategray;
+}
+
+.navbar-default .navbar-brand {
+    background-color: darkslategray;
+    color: whitesmoke;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    background-color: darkslategray;
+    color: whitesmoke;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: lightgray;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: whitesmoke;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background: #000000;
+    color: whitesmoke;
+    background-color: darkslateblue;
+}
+
+.row {
+    margin: 5px 2px 5px 2px;
+    padding: 2px;
+}
+
+.col-md-3 {
+    padding: 0px;
+}
+
+.proj-result {
+    background-color: lightgray;
+    margin: 15px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.proj-result img {
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+.proj-result h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.proj-result h3 a:link {
+    color: black;
+    font-weight: bold;
+}
+
+.proj-result h3 a:visited {
+    color: #444444;
+}
+
+.proj-result h3 a:active {
+    color: darkblue;
+}
+
+.proj-result h3 a:hover {
+    color: darkblue;
+}
+
+.proj-result p small {
+    margin: 0px;
+    font-size: 12px;
+}
+
+.proj-result p small a:link {
+    color: black;
+    font-weight: bold;
+}
+
+.proj-result p small a:visited {
+    color: #444444;
+}
+
+.proj-result p small a:active {
+    color: darkblue;
+}
+
+.proj-result p small a:hover {
+    color: darkblue;
+}
