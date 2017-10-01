@@ -1,17 +1,23 @@
 body {
-    background-color: dimgray;
+    background-color: lightsteelblue;
 }
 
 h2 {
     margin-bottom: 30px;
+    color: whitesmoke;
+}
+
+.checkbox {
+    font-size: 13px;
+    color: whitesmoke;
 }
 
 .btn-group button {
-    margin: 2px;
+    margin: 0px 0px 0px 0px;
 }
 
 .jumbotron {
-    background-color: slategray;
+    background-color: #353585;
     border: 3px solid black;
     border-radius: 10px;
     padding: 10px 10px 30px 10px;
@@ -20,18 +26,18 @@ h2 {
 
 .navbar-default {
     background: #000000;
-    background-color: darkslategray;
-    color: darkslategray;
+    background-color: midnightblue;
+    color: whitesmoke;
     border: none;
 }
 
 .navbar-default .navbar-brand {
-    background-color: darkslategray;
+    background-color: midnightblue;
     color: whitesmoke;
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    background-color: darkslategray;
+    background-color: midnightblue;
     color: whitesmoke;
 }
 
@@ -46,7 +52,7 @@ h2 {
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background: #000000;
     color: whitesmoke;
-    background-color: darkslateblue;
+    background-color: darkblue;
 }
 
 .row {
@@ -59,7 +65,7 @@ h2 {
 }
 
 .proj-result {
-    background-color: lightgray;
+    background-color: whitesmoke;
     margin: 15px;
     padding: 10px;
     border: 2px solid black;

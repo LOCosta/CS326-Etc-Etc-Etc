@@ -21,14 +21,15 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Advanced Search</a></li>
                 <li><a href="#">Profile</a></li> <!-- TODO: Fix placeholder -->
-                <li><a href="#">Active Projects</a></li> <!-- TODO: Fix placeholder -->
             </ul>
-            <ul class="nav navbar-nav navbar-right"> <!--TODO: Align this vertically to the navbar-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Projects</a></li> <!-- TODO: Fix placeholder -->
+                <li><a href="#" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li> <!-- TODO: Fix placeholder-->
                 <li>
                     <div class="input-group">
                         <form class="navbar-form" role="search">
                             <input type="text" class="form-control" placeholder="Quick Search">
-                            <button class="btn btn-default" type="submit">Search</button> <!-- TODO: add a little magnifying glass instead of text-->
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button> <!-- TODO: add a little magnifying glass instead of text-->
                         </form>
                     </div>
                 </li>
@@ -68,24 +69,6 @@
                                 <li><a href="#">Closed</a></li>
                             </ul>
                         </div>
-                        <div class="btn-group">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="distance" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="true">
-                                Maximum Distance Away
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="distance">
-                                <li><a href="#">Any</a></li>
-                                <li><a href="#">Within 1000mi</a></li>
-                                <li><a href="#">Within 500mi</a></li>
-                                <li><a href="#">Within 100mi</a></li>
-                                <li><a href="#">Within 50mi</a></li>
-                                <li><a href="#">Within 10mi</a></li>
-                                <li><a href="#">Within 5mi</a></li>
-                                <li><a href="#">Within 1mi</a></li>
-                                <li><a href="#">Not location-based</a></li>
-                            </ul>
-                        </div>
                     </div>
 
                     <div class="col-md-4">
@@ -104,11 +87,24 @@
 
                 <div class="row">
             
-                    <div class="col-md-4">
-                        <div class="checkbox" align="center">
-                            <label>
-                                <input type="checkbox"> Include projects that you are already a part of
-                            </label>
+                    <div align="center" class="col-md-4">
+                        <div class="btn-group btn-gr">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="distance" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true">
+                                Maximum Distance Away
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="distance">
+                                <li><a href="#">Any</a></li>
+                                <li><a href="#">Within 1000mi</a></li>
+                                <li><a href="#">Within 500mi</a></li>
+                                <li><a href="#">Within 100mi</a></li>
+                                <li><a href="#">Within 50mi</a></li>
+                                <li><a href="#">Within 10mi</a></li>
+                                <li><a href="#">Within 5mi</a></li>
+                                <li><a href="#">Within 1mi</a></li>
+                                <li><a href="#">Not location-based</a></li>
+                            </ul>
                         </div>
                     </div>
 
