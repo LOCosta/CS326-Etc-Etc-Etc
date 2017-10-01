@@ -1,13 +1,13 @@
 body {
-    background-color: lightgray;
+    background-color: dimgray;
 }
 
 h2 {
     margin-bottom: 30px;
 }
 
-button {
-    margin: 4px 0px 4px 0px;
+.btn-group button {
+    margin: 2px;
 }
 
 .jumbotron {
@@ -22,6 +22,7 @@ button {
     background: #000000;
     background-color: darkslategray;
     color: darkslategray;
+    border: none;
 }
 
 .navbar-default .navbar-brand {
