@@ -1,0 +1,112 @@
+!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>RENDEZVOUS - Create A New Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../styles/Project View.css">
+</head>
+    
+<style>
+    @font-face{
+    font-family: h2Font;
+    src: url("font/mocking_bird.ttf");
+    }
+    
+    h2 {
+        font-family: h2Font;
+    }
+    
+    
+    @font-face{
+    font-family: pFont;
+    src: url("font/euphorigenic.ttf")
+    }
+    
+    p{
+        font-family: pFont;
+    }
+    </style>
+    
+    
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="../index.html">Rendezvous</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="search.html">Advanced Search</a></li>
+            <li><a href="#">Profile</a></li> <!-- TODO: Fix placeholder -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Projects</a></li> <!-- TODO: Fix placeholder -->
+            <li class = "active"><a href="#" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li> <!-- TODO: Fix placeholder-->
+            <li>
+                <div class="input-group">
+                    <form class="navbar-form" role="search">
+                        <input type="text" class="form-control" placeholder="Quick Search">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button> <!-- TODO: add a little magnifying glass instead of text-->
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header -->
+    <div class ="container">
+        <div class="jumbotron">
+    <h2 align="center" > Upload A New Project Idea </h2>
+<!-- Input for info to add -->
+<p> Name of Project: </p>
+     <div class="col-md-4">
+            <form class="form-horizontal">
+                    <input type="text" class="form-control" placeholder="Be creative!" style="height: 50px">
+            </form>
+     </div>
+  <p> What is the primary location of your project? </p>  
+     <div class="col-md-4">
+            <form class="form-horizontal">
+                    <input type="text" class="form-control" placeholder="Zipcode Only" style="height: 50px">
+            </form>
+     </div>
+ <p> What are some keywords associated with this project?</p>   
+     <div class="col-md-4">
+            <form class="form-horizontal">
+                    <input type="text" class="form-control" placeholder="Please seperate with commas."style="height: 50px">
+            </form>
+     </div>
+<p> What is the goal of your project? </p>
+     <div class="col-md-4">
+            <form class="form-horizontal">
+                    <input type="text" class="form-control" style="height: 100px">
+            </form>
+     </div>
+    
+ <p> Description of Project. </p>          
+ <div class="col-md-4" >
+            <form class="form-horizontal">
+                    <input type="text" class="form-control" style="height: 300px ">
+            </form>
+     </div>
+  <p>Anything else you'd like users to know?</p>  
+    <div class="col-md-4">
+            <form class="form-horizontal">
+                    <input type="text" class="form-control"style="height: 300px ">
+            </form>
+     </div>
+<!-- Button to Upload Idea -->
+ 
+<div align="center">
+ <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" align="center">
+        Upload Idea! 
+      </button>
+   
+</body>
+</html>
