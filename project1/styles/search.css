@@ -1,0 +1,92 @@
+body {
+    background-color: whitesmoke;
+}
+
+h2 {
+    margin-bottom: 30px;
+    color: whitesmoke;
+}
+
+.checkbox {
+    font-size: 13px;
+    color: whitesmoke;
+}
+
+.btn-group button {
+    margin: 0px 0px 0px 0px;
+}
+
+.jumbotron {
+    background-color: #353585;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+.row {
+    margin: 5px 2px 5px 2px;
+    padding: 2px;
+}
+
+.col-md-3 {
+    padding: 0px;
+}
+
+.proj-result {
+    background-color: whitesmoke;
+    margin: 15px;
+    padding: 10px;
+    border: 3px solid lightsteelblue;
+    border-radius: 6px;
+}
+
+.proj-result img {
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+.proj-result h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.proj-result h3 a:link {
+    color: black;
+    font-weight: bold;
+}
+
+.proj-result h3 a:visited {
+    color: #444444;
+}
+
+.proj-result h3 a:active {
+    color: darkblue;
+}
+
+.proj-result h3 a:hover {
+    color: darkblue;
+}
+
+.proj-result p small {
+    margin: 0px;
+    font-size: 12px;
+}
+
+.proj-result p small a:link {
+    color: black;
+    font-weight: bold;
+}
+
+.proj-result p small a:visited {
+    color: #444444;
+}
+
+.proj-result p small a:active {
+    color: darkblue;
+}
+
+.proj-result p small a:hover {
+    color: darkblue;
+}

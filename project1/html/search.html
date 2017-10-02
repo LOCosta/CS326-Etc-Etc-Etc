@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redenzvous Advanced Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../styles/search.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../index.html">Rendezvous</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Advanced Search</a></li>
+                <li><a href="#">Profile</a></li> <!-- TODO: Fix placeholder -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Projects</a></li> <!-- TODO: Fix placeholder -->
+                <li><a href="#" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li> <!-- TODO: Fix placeholder-->
+                <li>
+                    <div class="input-group">
+                        <form class="navbar-form" role="search">
+                            <input type="text" class="form-control" placeholder="Quick Search">
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button> <!-- TODO: add a little magnifying glass instead of text-->
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class ="container">
+        <div class="jumbotron">
+            <h2 align="center">Advanced Search</h2>
+            <div class="container-fluid">
+                <div class="row">
+                    <div align="center" class="col-md-4">
+                        <div class="btn-group btn-gr">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="category" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true">
+                                Project Category
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="category">
+                                <li><a href="#">Placeholder</a></li>
+                                <li><a href="#">Placeholder</a></li>
+                                <li><a href="#">Placeholder</a></li>
+                                <li><a hrex="#">Placeholder</a></li>
+                                <li><a hrex="#">Placeholder</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="status" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true">
+                                Project Status
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="status">
+                                <li><a href="#">Active</a></li>
+                                <li><a href="#">Inactive</a></li>
+                                <li><a href="#">Closed</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <form class="form-horizontal">
+                                    <input type="text" class="form-control" placeholder="Title includes any of">
+                        </form>
+                    </div>
+
+                    <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control" placeholder="Description includes any of">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row">
+            
+                    <div align="center" class="col-md-4">
+                        <div class="btn-group btn-gr">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="distance" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true">
+                                Maximum Distance Away
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="distance">
+                                <li><a href="#">Any</a></li>
+                                <li><a href="#">Within 1000mi</a></li>
+                                <li><a href="#">Within 500mi</a></li>
+                                <li><a href="#">Within 100mi</a></li>
+                                <li><a href="#">Within 50mi</a></li>
+                                <li><a href="#">Within 10mi</a></li>
+                                <li><a href="#">Within 5mi</a></li>
+                                <li><a href="#">Within 1mi</a></li>
+                                <li><a href="#">Not location-based</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control" placeholder="Title includes all of">
+                        </form>
+                    </div>
+
+                    <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control" placeholder="Description includes all of">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+            
+                    <div class="col-md-4">
+                        <div class="checkbox" align="center">
+                            <label>
+                                <input type="checkbox"> Include only projects looking for roles you are interested in
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control" placeholder="Tags include">
+                        </form>
+                    </div>
+
+                    <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control" placeholder="Project created by">
+                        </form>
+                    </div>
+                </div>
+
+                <br>
+                <div class="col-md-12" align="center">
+                    <button class="btn btn-default btn-lg">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="search-results">
+                <h2 align="center">Results</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" align="center">
+                            <div class="proj-result">
+                                <img src="../img/placeholder-970.png" width="100" height="100">
+                                <h3 align="center"><a href="#">Project Name</a></h3>
+                                <p align="center"><small>Project created by: <a href="#">USERNAME</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div align="center">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span></button>
+                            <button type="button" class="btn btn-primary disabled">1</button>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

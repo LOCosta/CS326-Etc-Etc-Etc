@@ -1,0 +1,31 @@
+body {
+    background-color:whitesmoke
+}
+
+p {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 16px;
+    color:whitesmoke;
+}
+
+h2 {
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+    font-size: 26px;
+    color: whitesmoke;
+}
+
+.jumbotron{
+    background-color: #353585;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+.container-fluid{
+    background-color:black;
+    border-style: solid;
+    border-color:black;
+    border-width: 2px;
+    border-radius: 5px;
+}
