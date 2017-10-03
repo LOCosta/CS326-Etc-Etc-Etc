@@ -4,12 +4,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width = device-width, initial-scale = 1">
-    <title>RENDEZVOUS - Project View</title>
+    <title>RENDEZVOUS - Profile View</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../styles/Project View.css">
+    <link rel="stylesheet" href="../styles/profile.css">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -19,10 +19,10 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="search.html">Advanced Search</a></li>
-            <li><a href="#">Profile</a></li> <!-- TODO: Fix placeholder -->
+            <li class="active"><a href="./profile.html">Profile</a></li> <!-- TODO: Fix placeholder -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class = "active"><a href="#">Projects</a></li> <!-- TODO: Fix placeholder -->
+            <li><a href="#">Projects</a></li> <!-- TODO: Fix placeholder -->
             <li><a href="#" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li> <!-- TODO: Fix placeholder-->
             <li>
                 <div class="input-group">
@@ -35,8 +35,85 @@
         </ul>
     </div>
 </nav>
-   
 
-   
+
+<div class="jumbotron">
+
+  <div class="container">
+      <div class="row">
+
+        <div class="col-md-3">
+          <img class="profile-im" src="../img/image-placeholder-500x500.jpg">
+          <h4>Firstname Lastname</h4>
+          <div>Amherst, MA</div>
+          <div class="interests">
+            <h4><strong>Fields of Interest:</strong></h4>
+            <ul>
+              <li>Interest 1</li>
+              <li>Interest 2</li>
+              <li>Interest 3</li>
+              <li>Interest 4</li>
+              <li>Competetive Rollerblading</li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="col-md-9">
+          <h4>Collaboration History</h4>
+          <h5>Creator</h5>
+          <div class="container">
+            <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+            <h4 class="project-name">Project Name 2</h4>
+            <h5><em>created August 2017</em></h5>
+            <div class="description">Here is where the project description will go!</div>
+            <div class="description">It will be a relatively short description of about this length.</div>
+            <button type="button" class="join">JOIN</button>
+          </div>
+          <div class="container">
+            <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+            <h4 class="project-name">Project Name 3</h4>
+            <h5><em>created October 2017</em></h5>
+            <div class="description">Here is where the project description will go!</div>
+            <div class="description">It will be a relatively short description of about this length.</div>
+            <button type="button" class="join">JOIN</button>
+          </div>
+          <div class="container">
+            <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+            <h4 class="project-name">Project Name 1</h4>
+            <h5><em>completed June 2017</em></h5>
+            <div class="description">Here is where the project description will go!</div>
+            <div class="description">It will be a relatively short description of about this length.</div>
+          </div>
+          <h5>Collaborator</h5>
+          <div class="container">
+            <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+            <h4 class="project-name">Project Name Z</h4>
+            <h5><em>joined March 2016</em></h5>
+            <div class="description">Here is where the project description will go!</div>
+            <div class="description">It will be a relatively short description of about this length.</div>
+            <button type="button" class="join">JOIN</button>
+          </div>
+          <div class="container">
+            <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+            <h4 class="project-name">Project Name X</h4>
+            <h5><em>completed February 2016</em></h5>
+            <div class="description">Here is where the project description will go!</div>
+            <div class="description">It will be a relatively short description of about this length.</div>
+          </div>
+          <div class="container">
+            <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+            <h4 class="project-name">Project Name Y</h4>
+            <h5><em>completed May 2017</em></h5>
+            <div class="description">Here is where the project description will go!</div>
+            <div class="description">It will be a relatively short description of about this length.</div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+</div>
+
 </body>
 </html>
