@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>RENDEZVOUS WEBPAGE</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    {% block navbar %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'SITE-MAINPAGE' %}">Rendezvous</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'PROJECT_ADVSEARCH' %}">Advanced Search</a></li>
+                <li><a href="{% url 'PROFILE_VIEWPAGE' %}">Profile</a></li> <!-- TODO: Fix placeholder -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{%  url 'PROJECT_VIEWPAGE' %}">Projects</a></li> <!-- TODO: Fix placeholder -->
+                <li><a href="{% url 'PROJECT_CREATEPAGE' %}" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li> <!-- TODO: Fix placeholder-->
+                <li>
+                    <div class="input-group">
+                        <form class="navbar-form" role="search">
+                            <input type="text" class="form-control" placeholder="Quick Search">
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+</body>
+
+</html>
