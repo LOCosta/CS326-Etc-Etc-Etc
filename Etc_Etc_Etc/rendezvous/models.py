@@ -1,4 +1,7 @@
 from django.db import models
+from django.urls import reverse
+import uuid
+
 
 # Create your models here.
     
@@ -50,9 +53,6 @@ class Location(models.Model):
         return '%s, %s, %s' % (self.country, self.state, self.city)
     
     
-from django.urls import reverse #Used to generate URLs by reversing the URL patterns
-
-import uuid
 
 class User(models.Model):
     """
