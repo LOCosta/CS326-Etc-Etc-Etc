@@ -51,8 +51,8 @@ class Location(models.Model):
     
     def __str__(self):
         return '%s, %s, %s' % (self.country, self.state, self.city)
-    
-    
+
+
 
 class User(models.Model):
     """
@@ -64,7 +64,7 @@ class User(models.Model):
     relevant_skills = models.ManyToManyField(Skill, help_text="Select one of your relevant skills.")
     # ManyToManyField used because skill can contain many users. Users can cover many skills.
     # Skill class has already been defined so we can specify the object above.
-    projects_owned = models.ManyToManyField(Project, help_text="Select a project that this user owns.")
+    projects_owned = models.ManyToManyField('Project', help_text="Select a project that this user owns.")
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
     
@@ -86,7 +86,7 @@ class Project(models.Model):
     """
     name = models.CharField(max_length=100)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique way to identify each project.")
-    owner = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    owner = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='owner')
     description = models.CharField(max_length=500)
     tags = models.ManyToManyField(Tag, help_text="Select relevant tags so users can find your project.")
     skills_desired = models.ManyToManyField(Skill, help_text="Select one of the relevant skills that you are looking for.")
@@ -97,14 +97,14 @@ class Project(models.Model):
     contributors = models.ManyToManyField(User, help_text="User that is contributing to this project.")
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
-    
-    
+
+
     def __str__(self):
         """
         String for representing the Model object.
         """
         return self.name
-    
+
     def get_absolute_url(self):
         """
         Returns the url to access a particular project.
