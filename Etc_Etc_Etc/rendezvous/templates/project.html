@@ -1,0 +1,44 @@
+{% load static %}
+
+<link rel="stylesheet" href="css/project.css">
+
+{% extends base_generic.html %}
+
+{% block title %} Rendezvous - Project View {% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="jumbotron">
+        <div class="page-header" align="middle">
+            <h2>Project View</h2>
+        </div>
+        <p><b>Project Name:</b> {{ proj_name }}</p>
+        <p><b>Project Creator:</b> {{ proj_creator }}</p>
+        <p><b>Project Description:</b></p>
+        <p>{{ proj_description }}</p>
+        <p><b>Participants:</b></p>
+        {% if proj_contributors %}
+          <ul>
+            {% for user in proj_contributors %}
+              <li>{{ user.name }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>{{ proj_name }} has no contributors...</p>
+        {% endif %}
+        <p><b>Desired Skillsets:</b></p>
+        {% if skills_desired %}
+          <ul>
+            {% for skill in skills_desired %}
+              <li>{{ skill }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>{{ proj_name }} has no desired skills...</p>
+        {% endif %}
+        <img src="../img/image-placeholder-500x500.jpg" alt="Smiley face" height="500" width="500">
+        <p><input type="button" value="Join" class = "btn btn-info"></p>
+    </div>
+</div>
+{% endblock %}
