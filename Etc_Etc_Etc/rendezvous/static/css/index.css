@@ -1,12 +1,12 @@
 
 @font-face {
     font-family: headerFont;
-    src: url("font/mocking_bird.ttf");
+    src: url("../font/mocking_bird.ttf");
 }
     
 @font-face {
     font-family: h2Font;
-    src: url("font/euphorigenic.ttf");
+    src: url("../font/euphorigenic.ttf");
 }
     
 body{
@@ -24,8 +24,8 @@ body{
         font-family: headerFont;
         font-size: 140px;
         letter-spacing: 20px;
-        top = 50%;
-        left = 50%;
+        top:  50%;
+        left:  50%;
         margin-top: 200px;
 }
 
@@ -37,7 +37,7 @@ body{
 }
  #hero {
      margin: 0px;
-     background-image: url("img/background.jpg");
+     background-image: url("../img/background.jpg");
      background-size:cover;
      background-position: center center;
      position: relative;

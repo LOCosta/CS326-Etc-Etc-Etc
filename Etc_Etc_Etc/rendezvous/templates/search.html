@@ -1,10 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Rendezvous Advanced Search</title>{% endblock %}
+
 {% load static %}
-
-<link rel="stylesheet" href="css/search.css">
-
-{% extends base_generic.html %}
-
-{% block title %} Rendezvous Advanced Search {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class ="container">
@@ -16,7 +17,7 @@
                         <div class="btn-group btn-gr">
                             <button class="btn btn-default dropdown-toggle" type="button" id="category" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="true">
-                                Project Skills Desired
+                                Skills Desired
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="category">
@@ -131,8 +132,8 @@
                             <div class="col-md-3" align="center">
                                 <div class="proj-result">
                                     <img src="{% static 'img/placeholder-970.png'%}" width="100" height="100">
-                                    <h3 align="center"><a href="{% url 'view-project' project.id %}">{{ project.name }}</a></h3>
-                                    <p align="center"><small>Project created by: <a href="{% url 'view-user-profile' project.owner.id %}">{{ project.owner.name }}</a></small></p>
+                                    <h3 align="center"><a href="{% url 'view-project' project.id.hex %}">{{ project.name }}</a></h3>
+                                    <p align="center"><small>Project created by: <a href="{% url 'view-user-profile' project.owner.id.hex %}">{{ project.owner.name }}</a></small></p>
                                 </div>
                             </div>
                         {% empty %}
