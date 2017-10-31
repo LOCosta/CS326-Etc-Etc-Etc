@@ -64,7 +64,7 @@ class User(models.Model):
     relevant_skills = models.ManyToManyField(Skill, help_text="Select one of your relevant skills.")
     # ManyToManyField used because skill can contain many users. Users can cover many skills.
     # Skill class has already been defined so we can specify the object above.
-    projects_owned = models.ManyToManyField('Project', help_text="Select a project that this user owns.")
+    projects_owned = models.ManyToManyField('Project', blank = True, help_text="Select a project that this user owns.")
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
     
@@ -94,7 +94,9 @@ class Project(models.Model):
     # Skill class has already been defined so we can specify the object above.
     events = models.ManyToManyField(Event)
     location = models.ForeignKey('Location', on_delete=models.SET_NULL, null=True)
-    contributors = models.ManyToManyField(User, help_text="User that is contributing to this project.")
+    contributors = models.ManyToManyField(User, blank=True, help_text="User that is contributing to this project.")
+    date_created = models.DateField(null=True, blank=True)
+    date_completed = models.DateField(null=True, blank=True)
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
 
