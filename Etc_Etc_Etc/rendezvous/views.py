@@ -38,6 +38,7 @@ def project(request, id):
                  'proj_contributors': proj_contributors, 'skills_desired': skills_desired}
     )
 
+
 def index(request):
     return render(
     request, 'index.html',
@@ -47,4 +48,18 @@ def create_project(request):
     return render (
     request, 'create-a-new-project-post.html',
     context={})
-    
+
+
+def search(request):
+    """
+    View function for advanced search page.
+    """
+
+    result_rows = Project.objects.all()[:12]  # Load only up to 16 results for now, need more after pages to search
+    skills = Skill.ojects.all()
+
+    return render(
+        request,
+        'search.html',
+        context={'result_rows': result_rows, 'skills': skills},
+    )
