@@ -37,3 +37,14 @@ def project(request, id):
         context={'proj_name': proj_name, 'proj_creator': proj_creator, 'proj_description': proj_description,
                  'proj_contributors': proj_contributors, 'skills_desired': skills_desired}
     )
+
+def index(request):
+    return render(
+    request, 'index.html',
+    context={})
+
+def create_project(request):
+    return render (
+    request, 'create-a-new-project-post.html',
+    context={})
+    
