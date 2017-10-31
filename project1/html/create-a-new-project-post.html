@@ -65,42 +65,20 @@
     <h2 align="center" > Upload A New Project Idea </h2>
 <!-- Input for info to add -->
 <p> Name of Project: </p>
-     <div class="col-md-4">
-            <form class="form-horizontal">
-                    <input type="text" class="form-control" placeholder="Be creative!" style="height: 50px">
-            </form>
-     </div>
-  <p> What is the primary location of your project? </p>  
-     <div class="col-md-4">
-            <form class="form-horizontal">
-                    <input type="text" class="form-control" placeholder="Zipcode Only" style="height: 50px">
-            </form>
-     </div>
- <p> What are some keywords associated with this project?</p>   
-     <div class="col-md-4">
-            <form class="form-horizontal">
-                    <input type="text" class="form-control" placeholder="Please seperate with commas."style="height: 50px">
-            </form>
-     </div>
-<p> What is the goal of your project? </p>
-     <div class="col-md-4">
-            <form class="form-horizontal">
-                    <input type="text" class="form-control" style="height: 100px">
-            </form>
-     </div>
+     <input models.CharField(max_length=100)>
+     
+<p> Description of Project. </p>          
+    <input models.CharField(max_length=500)>
+            
+<p> What is the primary location of your project? </p>  
+     <input models.Charfield(max_length>
+<p> Select relevant tags so other users can find your project.</p>   
     
- <p> Description of Project. </p>          
- <div class="col-md-4" >
-            <form class="form-horizontal">
-                    <input type="text" class="form-control" style="height: 300px ">
-            </form>
-     </div>
-  <p>Anything else you'd like users to know?</p>  
-    <div class="col-md-4">
-            <form class="form-horizontal">
-                    <input type="text" class="form-control"style="height: 300px ">
-            </form>
-     </div>
+<p>When thinking of potential team members, what skils are you looking for? </p>  
+
+<p> What is the location of your project? </p>
+
+<p> Are there any contributors on this project? </p>
 <!-- Button to Upload Idea -->
  
 <div align="center">
