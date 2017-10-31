@@ -1,0 +1,53 @@
+body {
+  color: whitesmoke;
+}
+
+button {
+  color: black;
+}
+
+.join {
+  margin: 50px 0px 0px 0px;
+}
+
+
+.profile-im {
+  width: 225px;
+  height: 225px;
+}
+
+.project-im {
+  width: 175px;
+  height: 175px;
+  float: left;
+  margin: 4px 10px 3px 0px;
+}
+
+.skills {
+  margin-top: 50px;
+  padding: 5px 0px 5px 3px;
+  color: black;
+  background-color: lightgray;
+}
+
+.row {
+  padding-top: 50px;
+}
+
+.jumbotron {
+    background-color: #353585;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+.container {
+  margin: 10px 0px 10px 0px;
+}
+
+.num-projects {
+    background-color: white;
+    color: black;
+    font-weight: 100;
+}
