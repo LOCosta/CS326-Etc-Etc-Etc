@@ -12,28 +12,6 @@
     <link rel="stylesheet" href="../styles/Project View.css">
 </head>
     
-<style>
-    @font-face{
-    font-family: h2Font;
-    src: url("font/mocking_bird.ttf");
-    }
-    
-    h2 {
-        font-family: h2Font;
-    }
-    
-    
-    @font-face{
-    font-family: pFont;
-    src: url("font/euphorigenic.ttf")
-    }
-    
-    p{
-        font-family: pFont;
-    }
-    </style>
-    
-    
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -65,20 +43,65 @@
     <h2 align="center" > Upload A New Project Idea </h2>
 <!-- Input for info to add -->
 <p> Name of Project: </p>
-     <input models.CharField(max_length=100)>
+     <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+          </div>
      
 <p> Description of Project. </p>          
-    <input models.CharField(max_length=500)>
+   <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+         </div>
             
-<p> What is the primary location of your project? </p>  
-     <input models.Charfield(max_length>
-<p> Select relevant tags so other users can find your project.</p>   
+<p> What is the primary location of your project? </p> 
+<p> Country: </p>
+            <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+                 </div>
+<p> State: </p>
+            <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+                 </div>
+<p> City: </p>
+            <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+                 </div>
+<p> Local Address: </p>
+            <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+                 </div>
+
+<p> Enter relevant tags so other users can find your project.</p>  
+   <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+        </div>
     
-<p>When thinking of potential team members, what skils are you looking for? </p>  
-
-<p> What is the location of your project? </p>
-
-<p> Are there any contributors on this project? </p>
+    
+<p>When thinking of potential team members, what skills are you looking for? </p>  
+   <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+ </div>
+<p> Are there any contributors on this project? Please indicate their usernames. </p>
+    <div class="col-md-4">
+                        <form class="form-horizontal">
+                            <input type="text" class="form-control">
+                        </form>
+         </div>
 <!-- Button to Upload Idea -->
  
 <div align="center">
