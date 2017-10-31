@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Rendezvous - User List</title>{% endblock %}
+
+{% load static %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+
+<!-- Note that this page is currently only for debugging purposes, not something that'd be part of the final site.-->
+{% block content %}
+    <h1>User List</h1>
+
+    {% if user_list %}
+        <ul>
+            {% for user in user_list %}
+                <li>
+                    <a href="{{ user.get_absolute_url }}">{{ user.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no users to display.</p>
+    {% endif %}
+{% endblock %}

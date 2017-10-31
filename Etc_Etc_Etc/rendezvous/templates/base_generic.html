@@ -22,10 +22,10 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'advanced-search' %}">Advanced Search</a></li>
-                <li><a href="{% url 'view-user-profile' '8e9021bae4c745bebac2ec95d358d9a6' %}">Profile</a></li> <!--Once sessions are implemented, redirect this to current user's profile-->
+                <li><a href="{% url 'user-list' %}">Profile</a></li> <!--Once sessions are implemented, redirect this to current user's profile-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{%  url 'view-project' 'd7732c7e05d04ee0b98902de2622bc25' %}">Projects</a></li> <!-- Once sessions implemented, go to user's most recently viewed project -->
+                <li><a href="{%  url 'project-list' %}">Projects</a></li> <!-- Once sessions implemented, go to user's most recently viewed project -->
                 <li><a href="{% url 'create-project' %}" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li>
                 <li>
                     <div class="input-group">

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Skill, Tag, Event, Location, User, Project
+from django.views import generic
 
 
 def profile(request, id):
@@ -71,3 +72,16 @@ def search(request):
         'search.html',
         context={'result_rows': result_rows, 'skills': skills},
     )
+
+
+class ProjectListView(generic.ListView):
+    model = Project
+    context_object_name = 'project_list'
+    template_name = 'project_list.html'
+
+
+class UserListView(generic.ListView):
+    model = User
+    context_object_name = 'user_list'
+    template_name = 'user_list.html'
+
