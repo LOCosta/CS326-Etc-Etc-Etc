@@ -1,0 +1,74 @@
+{% load static %}
+<link rel="stylesheet" href="css/profile.css">
+
+{% extends base_generic.html %}
+
+{% block title %} Rendezvous - Profile View {% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+
+  <div class="container">
+      <div class="row">
+
+        <div class="col-md-3">
+          <img class="profile-im" src="../img/image-placeholder-500x500.jpg">
+          <h4>{{ user_name }}</h4>
+          <div class="skills">
+            <h4><strong>Skills:</strong></h4>
+            {% if user_skills %}
+              <ul>
+                {% for skill in user_skills %}
+                  <li>{{ skill }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+
+
+        <div class="col-md-9">
+          <h4>Project History</h4>
+
+          <h5>Created  <span class="num-projects">{{ num_proj_created }}</span></h5>
+            {% if projects_created %}
+              {% for project in projects_created %}
+                <div class="container">
+                  <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+                  <h4 class="project-name">{{ project.name }}</h4>
+                  {% if project.date_completed %}
+                    <h5><em>completed {{ project.date_completed }}</em></h5>
+                  {% else %}
+                    <h5><em>created {{ project.date_created }}</em></h5>
+                  {% endif %}
+                  <div class="description">{{ project.description }}</div>
+                  <button type="button" class="join">JOIN</button>
+                </div>
+              {% endfor %}
+            {% else %}
+              <div class="container">{{ user_name }} has not created any projects ...</div>
+            {% endif %}
+
+          <h5>Contributor  <span class="num-projects">{{ num_proj_contributed }}</span></h5>
+            {% if projects_contributed %}
+              {% for project in projects_contributed %}
+                <div class="container">
+                  <img class="project-im" src="../img/image-placeholder-500x500.jpg">
+                  <h4 class="project-name">{{ project.name }}</h4>
+                  {% if project.date_completed %}
+                    <h5><em>{{ project.date_completed }}</em></h5>
+                  {% else %}
+                    <h5><em>{{ project.date_joined }}</em></h5>
+                  {% endif %}
+                  <div class="description">{{ project.description }}</div>
+                  <button type="button" class="join">JOIN</button>
+                </div>
+              {% endfor %}
+            {% else %}
+              <div class="container">{{ user_name }} has not contributed to any projects ...</div>
+            {% endif %}
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
