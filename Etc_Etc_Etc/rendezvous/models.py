@@ -92,7 +92,7 @@ class Project(models.Model):
     skills_desired = models.ManyToManyField(Skill, help_text="Select one of the relevant skills that you are looking for.")
     # ManyToManyField used because skill can contain many projects. Projects can cover many skills.
     # Skill class has already been defined so we can specify the object above.
-    events = models.ManyToManyField(Event)
+    events = models.ManyToManyField(Event, blank=True)
     location = models.ForeignKey('Location', on_delete=models.SET_NULL, null=True)
     contributors = models.ManyToManyField(User, blank=True, help_text="User that is contributing to this project.")
     date_created = models.DateField(null=True, blank=True)
