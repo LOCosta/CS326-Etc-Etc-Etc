@@ -78,7 +78,7 @@ class User(models.Model):
         """
         Returns the url to access a particular user.
         """
-        return reverse('user', args=[str(self.id)])
+        return reverse('view-user-profile', args=[str(self.id.hex)])
     
 class Project(models.Model):
     """
@@ -111,4 +111,4 @@ class Project(models.Model):
         """
         Returns the url to access a particular project.
         """
-        return reverse('project', args=[str(self.id)])
+        return reverse('view-project', args=[str(self.id.hex)])

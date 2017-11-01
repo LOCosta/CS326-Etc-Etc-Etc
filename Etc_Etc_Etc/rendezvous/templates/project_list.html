@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Rendezvous - Project List</title>{% endblock %}
+
+{% load static %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+
+<!-- Note that this page is currently only for debugging purposes, not something that'd be part of the final site.-->
+{% block content %}
+    <h1>Project List</h1>
+
+    {% if project_list %}
+        <ul>
+            {% for project in project_list %}
+                <li>
+                    <a href="{{ project.get_absolute_url }}">{{ project.name }}</a> - <a href="{{ project.owner.get_absolute_url }}">{{ project.owner.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no projects to display.</p>
+    {% endif %}
+{% endblock %}

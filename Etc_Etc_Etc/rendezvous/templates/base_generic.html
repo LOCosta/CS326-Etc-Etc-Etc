@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    {% block stylesheets %}{% endblock %}
 </head>
 
 <body>
@@ -17,15 +18,15 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'SITE-MAINPAGE' %}">Rendezvous</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Rendezvous</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'PROJECT_ADVSEARCH' %}">Advanced Search</a></li>
-                <li><a href="{% url 'PROFILE_VIEWPAGE' %}">Profile</a></li> <!-- TODO: Fix placeholder -->
+                <li><a href="{% url 'advanced-search' %}">Advanced Search</a></li>
+                <li><a href="{% url 'user-list' %}">Profile</a></li> <!--Once sessions are implemented, redirect this to current user's profile-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{%  url 'PROJECT_VIEWPAGE' %}">Projects</a></li> <!-- TODO: Fix placeholder -->
-                <li><a href="{% url 'PROJECT_CREATEPAGE' %}" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li> <!-- TODO: Fix placeholder-->
+                <li><a href="{%  url 'project-list' %}">Projects</a></li> <!-- Once sessions implemented, go to user's most recently viewed project -->
+                <li><a href="{% url 'create-project' %}" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li>
                 <li>
                     <div class="input-group">
                         <form class="navbar-form" role="search">
