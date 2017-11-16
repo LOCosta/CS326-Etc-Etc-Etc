@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 import uuid
 
 
@@ -58,6 +59,7 @@ class User(models.Model):
     """
     Model representing a specific user.
     """
+    account = models.OneToOneField(User, on_delete=models.CASCADE, null = True)
     name = models.CharField(max_length=50)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique way to identify each user.")
     email = models.CharField(max_length=50)
