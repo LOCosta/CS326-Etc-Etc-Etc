@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Skill, Tag, Event, Location, User, Project
+from .models import Skill, Tag, Event, Location, Profile, Project
 from django.views import generic
 
 
@@ -7,7 +7,7 @@ def profile(request, id):
     """
     View function for the profile page.
     """
-    user = User.objects.get(id=id)
+    user = Profile.objects.get(id=id)
     user_name = user.name
     user_skills = user.relevant_skills.all()
 
@@ -80,8 +80,8 @@ class ProjectListView(generic.ListView):
     template_name = 'project_list.html'
 
 
-class UserListView(generic.ListView):
-    model = User
+class ProfileListView(generic.ListView):
+    model = Profile
     context_object_name = 'user_list'
     template_name = 'user_list.html'
 
