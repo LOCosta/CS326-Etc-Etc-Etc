@@ -2,10 +2,11 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 import uuid
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
-    
 class Skill(models.Model):
     """
     Model representing a user's skill in a particular area(e.g. programming, dancing, baking, etc.).
@@ -17,7 +18,8 @@ class Skill(models.Model):
         String for representing the Model object (in Admin site etc.)
         """
         return self.name
-    
+
+
 class Tag(models.Model):
     """
     Model representing a keyword/tag to make searching for relevant projects easier(e.g. programming, dancing, baking, etc.).
@@ -29,7 +31,8 @@ class Tag(models.Model):
         String for representing the Model object (in Admin site etc.)
         """
         return self.tag
-    
+
+
 class Event(models.Model):
     """
     Model representing a specific event associated with a user's project. (e.g. Performance, Presentation, etc.)"""
@@ -40,6 +43,7 @@ class Event(models.Model):
     
     def __str__(self):
         return self.name
+
 
 class Location(models.Model):
     """
@@ -54,8 +58,7 @@ class Location(models.Model):
         return '%s, %s, %s' % (self.country, self.state, self.city)
 
 
-
-class User(models.Model):
+class Profile(models.Model):
     """
     Model representing a specific user.
     """
@@ -81,14 +84,24 @@ class User(models.Model):
         Returns the url to access a particular user.
         """
         return reverse('view-user-profile', args=[str(self.id.hex)])
-    
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
+
+
 class Project(models.Model):
     """
     Model representing a specific project.
     """
     name = models.CharField(max_length=100)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique way to identify each project.")
-    owner = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='owner')
+    owner = models.ForeignKey('Profile', on_delete=models.SET_NULL, null=True, related_name='owner')
     description = models.CharField(max_length=500)
     tags = models.ManyToManyField(Tag, help_text="Select relevant tags so users can find your project.")
     skills_desired = models.ManyToManyField(Skill, help_text="Select one of the relevant skills that you are looking for.")
@@ -96,12 +109,11 @@ class Project(models.Model):
     # Skill class has already been defined so we can specify the object above.
     events = models.ManyToManyField(Event, blank=True)
     location = models.ForeignKey('Location', on_delete=models.SET_NULL, null=True)
-    contributors = models.ManyToManyField(User, blank=True, help_text="User that is contributing to this project.")
+    contributors = models.ManyToManyField(Profile, blank=True, help_text="User that is contributing to this project.")
     date_created = models.DateField(null=True, blank=True)
     date_completed = models.DateField(null=True, blank=True)
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
-
 
     def __str__(self):
         """
