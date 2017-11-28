@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Skill, Tag, Event, Location, Profile, Project
 from django.views import generic
+from django.views.generic.edit import UpdateView
 
 
 def profile(request, id):
@@ -41,6 +42,10 @@ def project(request, id):
         context={'proj_name': proj_name, 'proj_creator': proj_creator, 'proj_description': proj_description,
                  'proj_contributors': proj_contributors, 'skills_desired': skills_desired}
     )
+
+class ProjectUpdate(UpdateView):
+    model = Project
+    fields = ['name', 'description', 'skills_desired']
 
 
 def index(request):
