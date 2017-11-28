@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Skill, Tag, Event, Location, Profile, Project
 from django.views import generic
+from django.views.generic.edit import UpdateView
 
 
 def profile(request, id):
@@ -21,7 +22,7 @@ def profile(request, id):
         request, 'profile.html',
         context={'user_name': user_name, 'user_skills': user_skills, 'proj_created': proj_created,
                  'num_proj_created': num_proj_created, 'proj_contributed': proj_contributed,
-                 'num_proj_contributed': num_proj_contributed}
+                 'num_proj_contributed': num_proj_contributed, 'id': id}
     )
 
 
@@ -85,3 +86,7 @@ class ProfileListView(generic.ListView):
     context_object_name = 'user_list'
     template_name = 'user_list.html'
 
+
+class ProfileUpdate(UpdateView):
+    model = Profile
+    fields = ['name', 'email', 'relevant_skills']
