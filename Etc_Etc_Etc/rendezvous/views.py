@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import Skill, Tag, Event, Location, Profile, Project
 from django.views import generic
-from django.views.generic.edit import UpdateView
-
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.urlresolvers import reverse
+from django.views.generic.edit import CreateView, UpdateView
+import datetime
 def profile(request, id):
     """
     View function for the profile page.
@@ -53,16 +54,6 @@ def index(request):
         request, 'index.html',
         context={}
     )
-
-
-def create_project(request):
-    skills = Skill.objects.all()
-    return render(
-        request, 'create-a-new-project-post.html',
-        context={'skills': skills}
-    )
-
-
 def search(request):
     """
     View function for advanced search page.
@@ -89,6 +80,30 @@ class ProfileListView(generic.ListView):
     model = Profile
     context_object_name = 'user_list'
     template_name = 'user_list.html'
+
+# @login_required
+# def create_project(request):
+#     if request.method == 'POST':
+#         form = CreateProjectForm(request.POST)
+#         if form.is_valid():
+#
+#             return HttpResponseRedirect(reverse('view-project', '2'))
+#     else:
+#         form = CreateProjectForm()
+#     return render(request, 'create-a-new-project-post.html', {'form': form})
+
+
+class ProjectCreate(CreateView, LoginRequiredMixin):
+    model = Project
+    fields = ['name', 'description', 'tags', 'skills_desired', 'location']
+
+    def get_success_url(self):
+        return reverse('view-project', args=(self.object.id.hex,))
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user.profile
+        form.instance.date_created = datetime.date.today()
+        return super(ProjectCreate, self).form_valid(form)
 
 
 class ProfileUpdate(UpdateView):

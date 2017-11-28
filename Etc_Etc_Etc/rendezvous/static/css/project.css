@@ -15,6 +15,18 @@ h2 {
     color: whitesmoke;
 }
 
+label {
+    color: whitesmoke
+}
+
+li {
+    color: whitesmoke
+}
+
+.helptext {
+    color: whitesmoke
+}
+
 .jumbotron{
     background-color: #353585;
     border: 3px solid black;
