@@ -43,6 +43,10 @@ def project(request, id):
                  'proj_contributors': proj_contributors, 'skills_desired': skills_desired}
     )
 
+class ProjectUpdate(UpdateView):
+    model = Project
+    fields = ['name', 'description', 'skills_desired']
+
 
 def index(request):
     return render(
