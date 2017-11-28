@@ -13,7 +13,7 @@
     <div class="jumbotron">
         <div class="page-header" align="middle">
             <h2>Project View</h2>
-            {% if user.is_authenticated and proj_creator.id.hex == user.profile.id.hex %}
+            {% if user.is_authenticated and proj_creator.id.hex == user.profile.id.hex or perms.rendezvous.can_change_project %}
             <a href="./update/">Edit</a>
             {% endif %}
         </div>
