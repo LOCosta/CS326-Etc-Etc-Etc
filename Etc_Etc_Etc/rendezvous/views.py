@@ -5,6 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.views.generic.edit import CreateView, UpdateView
 import datetime
+from .forms import ProjectForm, ProfileForm
+
+
 def profile(request, id):
     """
     View function for the profile page.
@@ -44,16 +47,14 @@ def project(request, id):
                  'proj_contributors': proj_contributors, 'skills_desired': skills_desired}
     )
 
-class ProjectUpdate(UpdateView):
-    model = Project
-    fields = ['name', 'description', 'skills_desired']
-
 
 def index(request):
     return render(
         request, 'index.html',
         context={}
     )
+
+
 def search(request):
     """
     View function for advanced search page.
@@ -95,7 +96,7 @@ class ProfileListView(generic.ListView):
 
 class ProjectCreate(CreateView, LoginRequiredMixin):
     model = Project
-    fields = ['name', 'description', 'tags', 'skills_desired', 'location']
+    form_class = ProjectForm
 
     def get_success_url(self):
         return reverse('view-project', args=(self.object.id.hex,))
@@ -106,6 +107,11 @@ class ProjectCreate(CreateView, LoginRequiredMixin):
         return super(ProjectCreate, self).form_valid(form)
 
 
+class ProjectUpdate(UpdateView):
+    model = Project
+    form_class = ProjectForm
+
+
 class ProfileUpdate(UpdateView):
     model = Profile
-    fields = ['name', 'email', 'relevant_skills']
+    form_class = ProfileForm
