@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'user/$', views.ProfileListView.as_view(), name='user-list'),
     url(r'user/(?P<id>[\d\w]+)/$', views.profile, name='view-user-profile'),
     url(r'advanced-search/', views.search, name='advanced-search',),
+    url(r'user/(?P<pk>[-\w]+)/update/$', views.ProfileUpdate.as_view(), name='edit-profile-user')
+  
 ]

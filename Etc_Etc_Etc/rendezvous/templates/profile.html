@@ -69,6 +69,10 @@
             {% else %}
               <div class="container">{{ user_name }} has not contributed to any projects ...</div>
             {% endif %}
+            <h6>          </h6>
+            {% if user.is_authenticated and user.profile.id.hex == id %}
+            <a href= "./update" type="button" class="edit">EDIT Profile</a>
+            {% endif %}
         </div>
       </div>
   </div>
