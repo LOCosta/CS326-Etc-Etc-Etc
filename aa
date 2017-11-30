@@ -1,0 +1,220 @@
+[1mdiff --git a/Etc_Etc_Etc/Etc_Etc_Etc/settings.py b/Etc_Etc_Etc/Etc_Etc_Etc/settings.py[m
+[1mindex 18be7f1..0174e7e 100644[m
+[1m--- a/Etc_Etc_Etc/Etc_Etc_Etc/settings.py[m
+[1m+++ b/Etc_Etc_Etc/Etc_Etc_Etc/settings.py[m
+[36m@@ -55,7 +55,7 @@[m [mROOT_URLCONF = 'Etc_Etc_Etc.urls'[m
+ TEMPLATES = [[m
+     {[m
+         'BACKEND': 'django.template.backends.django.DjangoTemplates',[m
+[31m-        'DIRS': [],[m
+[32m+[m[32m        'DIRS': ['./templates', ],[m
+         'APP_DIRS': True,[m
+         'OPTIONS': {[m
+             'context_processors': [[m
+[36m@@ -119,3 +119,5 @@[m [mUSE_TZ = True[m
+ # https://docs.djangoproject.com/en/1.11/howto/static-files/[m
+ [m
+ STATIC_URL = '/static/'[m
+[32m+[m
+[32m+[m[32mLOGIN_REDIRECT_URL = '/'[m
+[1mdiff --git a/Etc_Etc_Etc/Etc_Etc_Etc/urls.py b/Etc_Etc_Etc/Etc_Etc_Etc/urls.py[m
+[1mindex 562f1b7..c3fc0e9 100644[m
+[1m--- a/Etc_Etc_Etc/Etc_Etc_Etc/urls.py[m
+[1m+++ b/Etc_Etc_Etc/Etc_Etc_Etc/urls.py[m
+[36m@@ -23,5 +23,6 @@[m [mfrom django.conf.urls.static import static[m
+ urlpatterns = [[m
+     url(r'^admin/', admin.site.urls),[m
+     url(r'^rendezvous/', include('rendezvous.urls')),[m
+[31m-    url(r'^$', RedirectView.as_view(url='/rendezvous/', permanent=True))[m
+[32m+[m[32m    url(r'^$', RedirectView.as_view(url='/rendezvous/', permanent=True)),[m
+[32m+[m[32m    url(r'^accounts/', include('django.contrib.auth.urls'))[m
+ ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)[m
+[1mdiff --git a/Etc_Etc_Etc/rendezvous/admin.py b/Etc_Etc_Etc/rendezvous/admin.py[m
+[1mindex 74a1bec..49433cd 100644[m
+[1m--- a/Etc_Etc_Etc/rendezvous/admin.py[m
+[1m+++ b/Etc_Etc_Etc/rendezvous/admin.py[m
+[36m@@ -1,13 +1,13 @@[m
+ from django.contrib import admin[m
+ [m
+ # Register your models here.[m
+[31m-from .models import Skill, Tag, Event, Location, User, Project[m
+[32m+[m[32mfrom .models import Skill, Tag, Event, Location, Profile, Project[m
+ [m
+ admin.site.register(Skill)[m
+ admin.site.register(Tag)[m
+ admin.site.register(Event)[m
+ admin.site.register(Location)[m
+[31m-admin.site.register(User)[m
+[32m+[m[32madmin.site.register(Profile)[m
+ admin.site.register(Project)[m
+ [m
+ class ProjectInline(admin.TabularInline):[m
+[1mdiff --git a/Etc_Etc_Etc/rendezvous/models.py b/Etc_Etc_Etc/rendezvous/models.py[m
+[1mindex c75e348..6e7497a 100644[m
+[1m--- a/Etc_Etc_Etc/rendezvous/models.py[m
+[1m+++ b/Etc_Etc_Etc/rendezvous/models.py[m
+[36m@@ -2,10 +2,11 @@[m [mfrom django.db import models[m
+ from django.urls import reverse[m
+ from django.contrib.auth.models import User[m
+ import uuid[m
+[32m+[m[32mfrom django.db.models.signals import post_save[m
+[32m+[m[32mfrom django.dispatch import receiver[m
+ [m
+ [m
+ # Create your models here.[m
+[31m-    [m
+ class Skill(models.Model):[m
+     """[m
+     Model representing a user's skill in a particular area(e.g. programming, dancing, baking, etc.).[m
+[36m@@ -17,7 +18,8 @@[m [mclass Skill(models.Model):[m
+         String for representing the Model object (in Admin site etc.)[m
+         """[m
+         return self.name[m
+[31m-    [m
+[32m+[m
+[32m+[m
+ class Tag(models.Model):[m
+     """[m
+     Model representing a keyword/tag to make searching for relevant projects easier(e.g. programming, dancing, baking, etc.).[m
+[36m@@ -29,7 +31,8 @@[m [mclass Tag(models.Model):[m
+         String for representing the Model object (in Admin site etc.)[m
+         """[m
+         return self.tag[m
+[31m-    [m
+[32m+[m
+[32m+[m
+ class Event(models.Model):[m
+     """[m
+     Model representing a specific event associated with a user's project. (e.g. Performance, Presentation, etc.)"""[m
+[36m@@ -41,6 +44,7 @@[m [mclass Event(models.Model):[m
+     def __str__(self):[m
+         return self.name[m
+ [m
+[32m+[m
+ class Location(models.Model):[m
+     """[m
+     Model representing the location of a certain project/the area in which it is being conducted[m
+[36m@@ -54,8 +58,7 @@[m [mclass Location(models.Model):[m
+         return '%s, %s, %s' % (self.country, self.state, self.city)[m
+ [m
+ [m
+[31m-[m
+[31m-class User(models.Model):[m
+[32m+[m[32mclass Profile(models.Model):[m
+     """[m
+     Model representing a specific user.[m
+     """[m
+[36m@@ -81,14 +84,24 @@[m [mclass User(models.Model):[m
+         Returns the url to access a particular user.[m
+         """[m
+         return reverse('view-user-profile', args=[str(self.id.hex)])[m
+[31m-    [m
+[32m+[m
+[32m+[m[32m    @receiver(post_save, sender=User)[m
+[32m+[m[32m    def create_user_profile(sender, instance, created, **kwargs):[m
+[32m+[m[32m        if created:[m
+[32m+[m[32m            Profile.objects.create(user=instance)[m
+[32m+[m
+[32m+[m[32m    @receiver(post_save, sender=User)[m
+[32m+[m[32m    def save_user_profile(sender, instance, **kwargs):[m
+[32m+[m[32m        instance.profile.save()[m
+[32m+[m
+[32m+[m
+ class Project(models.Model):[m
+     """[m
+     Model representing a specific project.[m
+     """[m
+     name = models.CharField(max_length=100)[m
+     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique way to identify each project.")[m
+[31m-    owner = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='owner')[m
+[32m+[m[32m    owner = models.ForeignKey('Profile', on_delete=models.SET_NULL, null=True, related_name='owner')[m
+     description = models.CharField(max_length=500)[m
+     tags = models.ManyToManyField(Tag, help_text="Select relevant tags so users can find your project.")[m
+     skills_desired = models.ManyToManyField(Skill, help_text="Select one of the relevant skills that you are looking for.")[m
+[36m@@ -96,13 +109,12 @@[m [mclass Project(models.Model):[m
+     # Skill class has already been defined so we can specify the object above.[m
+     events = models.ManyToManyField(Event, blank=True)[m
+     location = models.ForeignKey('Location', on_delete=models.SET_NULL, null=True)[m
+[31m-    contributors = models.ManyToManyField(User, blank=True, help_text="User that is contributing to this project.")[m
+[32m+[m[32m    contributors = models.ManyToManyField(Profile, blank=True, help_text="User that is contributing to this project.")[m
+     date_created = models.DateField(null=True, blank=True)[m
+     date_completed = models.DateField(null=True, blank=True)[m
+     # ManyToManyField used because genre can contain many books. Books can cover many genres.[m
+     # Genre class has already been defined so we can specify the object above.[m
+ [m
+[31m-[m
+     def __str__(self):[m
+         """[m
+         String for representing the Model object.[m
+[1mdiff --git a/Etc_Etc_Etc/rendezvous/templates/base_generic.html b/Etc_Etc_Etc/rendezvous/templates/base_generic.html[m
+[1mindex 27ffe45..b0b9895 100644[m
+[1m--- a/Etc_Etc_Etc/rendezvous/templates/base_generic.html[m
+[1m+++ b/Etc_Etc_Etc/rendezvous/templates/base_generic.html[m
+[36m@@ -26,7 +26,9 @@[m
+             </ul>[m
+             <ul class="nav navbar-nav navbar-right">[m
+                 <li><a href="{%  url 'project-list' %}">Projects</a></li> <!-- Once sessions implemented, go to user's most recently viewed project -->[m
+[31m-                <li><a href="{% url 'create-project' %}" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li>[m
+[32m+[m[32m                {% if user.is_authenticated %}[m
+[32m+[m[32m                    <li><a href="{% url 'create-project' %}" title="Create new project"><span class="glyphicon glyphicon-plus"></span></a></li>[m
+[32m+[m[32m                {% endif %}[m
+                 <li>[m
+                     <div class="input-group">[m
+                         <form class="navbar-form" role="search">[m
+[36m@@ -35,6 +37,12 @@[m
+                         </form>[m
+                     </div>[m
+                 </li>[m
+[32m+[m[32m                {% if user.is_authenticated %}[m
+[32m+[m[32m                    <li><a href="{% url 'view-user-profile' user.profile.id.hex %}">User: {{ user.get_username }}</a></li>[m
+[32m+[m[32m                    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>[m
+[32m+[m[32m                {% else %}[m
+[32m+[m[32m                    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>[m
+[32m+[m[32m                {% endif %}[m
+             </ul>[m
+         </div>[m
+     </nav>[m
+[1mdiff --git a/Etc_Etc_Etc/rendezvous/urls.py b/Etc_Etc_Etc/rendezvous/urls.py[m
+[1mindex 273fa88..0912436 100644[m
+[1m--- a/Etc_Etc_Etc/rendezvous/urls.py[m
+[1m+++ b/Etc_Etc_Etc/rendezvous/urls.py[m
+[36m@@ -9,7 +9,7 @@[m [murlpatterns = [[m
+     url(r'project/(?P<id>[\d\w]+)/$', views.project, name='view-project'),[m
+     # url(r'user/', views.profile, name='view-current-user-profile'),  # Requires sessions to be implemented[m
+     url(r'project/$', views.ProjectListView.as_view(), name='project-list'),[m
+[31m-    url(r'user/$', views.UserListView.as_view(), name='user-list'),[m
+[32m+[m[32m    url(r'user/$', views.ProfileListView.as_view(), name='user-list'),[m
+     url(r'user/(?P<id>[\d\w]+)/$', views.profile, name='view-user-profile'),[m
+     url(r'advanced-search/', views.search, name='advanced-search',),[m
+ ][m
+[1mdiff --git a/Etc_Etc_Etc/rendezvous/views.py b/Etc_Etc_Etc/rendezvous/views.py[m
+[1mindex 1645c6f..591a874 100644[m
+[1m--- a/Etc_Etc_Etc/rendezvous/views.py[m
+[1m+++ b/Etc_Etc_Etc/rendezvous/views.py[m
+[36m@@ -1,5 +1,5 @@[m
+ from django.shortcuts import render[m
+[31m-from .models import Skill, Tag, Event, Location, User, Project[m
+[32m+[m[32mfrom .models import Skill, Tag, Event, Location, Profile, Project[m
+ from django.views import generic[m
+ [m
+ [m
+[36m@@ -7,7 +7,7 @@[m [mdef profile(request, id):[m
+     """[m
+     View function for the profile page.[m
+     """[m
+[31m-    user = User.objects.get(id=id)[m
+[32m+[m[32m    user = Profile.objects.get(id=id)[m
+     user_name = user.name[m
+     user_skills = user.relevant_skills.all()[m
+ [m
+[36m@@ -80,8 +80,8 @@[m [mclass ProjectListView(generic.ListView):[m
+     template_name = 'project_list.html'[m
+ [m
+ [m
+[31m-class UserListView(generic.ListView):[m
+[31m-    model = User[m
+[32m+[m[32mclass ProfileListView(generic.ListView):[m
+[32m+[m[32m    model = Profile[m
+     context_object_name = 'user_list'[m
+     template_name = 'user_list.html'[m
+ [m
