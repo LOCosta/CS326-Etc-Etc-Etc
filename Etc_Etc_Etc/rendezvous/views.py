@@ -59,15 +59,26 @@ def search(request):
     """
     View function for advanced search page.
     """
+    skills = Skill.objects.all()
+
+    return render(
+        request,
+        'search.html',
+        context={'skills': skills},
+    )
+
+def search_review(request):
+    """
+    View function for advanced search page.
+    """
 
     projects = Project.objects.all()[:12]  # Load only up to 12 results for now, need more once search is implemented
-    skills = Skill.objects.all()
     result_rows = [projects[0:4], projects[4:8], projects[8:12]]  # Also temporary.
 
     return render(
         request,
         'search.html',
-        context={'result_rows': result_rows, 'skills': skills},
+        context={'result_rows': result_rows},
     )
 
 
