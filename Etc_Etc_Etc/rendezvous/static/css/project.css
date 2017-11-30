@@ -23,6 +23,12 @@ li {
     color: whitesmoke
 }
 
+td {
+    padding-bottom: 10px;
+}
+.static-size {
+    resize: none;
+}
 .helptext {
     color: whitesmoke
 }
