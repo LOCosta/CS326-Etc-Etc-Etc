@@ -1,0 +1,62 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Rendezvous Advanced Search</title>{% endblock %}
+
+{% load static %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class ="container">
+        <div class="jumbotron">
+
+            <h2 align="center">Advanced Search</h2>
+            <div class="container-fluid">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        {{ form.non_field_errors }}
+                        <div class="fieldWrapper" align="center">
+                            {{ form.project_name.errors }}
+                            <label for="{{ form.project_name.id_for_label }}">Terms in project name</label>
+                            {{ form.project_name }}
+                        </div>
+
+                        <div class="fieldWrapper" align="center">
+                            {{ form.description.errors }}
+                            <label for="{{ form.description.id_for_label }}">Terms in project description</label>
+                            {{ form.description }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div align="center" class="fieldWrapper">
+                            {{ form.tags.errors }}
+                            <label for="{{ form.tags.id_for_label }}">Select tags to filter by</label>
+                            {{ form.tags }}
+                        </div>
+
+                        <div align="center" class="fieldWrapper">
+                            {{ form.skills_desired.errors }}
+                            <label for="{{ form.skills_desired.id_for_label }}">Select skills to filter by</label>
+                            {{ form.skills_desired }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div align="center" class="fieldWrapper">
+                            {{ form.location.errors }}
+                            <label for="{{ form.location.id_for_label }}">Select project location</label>
+                            {{ form.location }}
+                        </div>
+
+                    <br>
+                    <div class="col-md-12" align="center">
+                        <button class="btn btn-default btn-lg" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

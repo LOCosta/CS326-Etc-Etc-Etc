@@ -30,13 +30,14 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['name', 'email', 'relevant_skills']
 
+
 class SearchForm(forms.Form):
-    skills_desired = forms.ModelMultipleChoiceField(queryset=Skill.objects.all().order_by('name'),
-                                                     widget=forms.SelectMultiple(attrs={'class': 'form-control'}))
-    location = forms.ModelChoiceField(queryset=Location.objects.all().order_by('country', 'state', 'city',
-                                                                               'local_address'),
+    skills_desired = forms.ModelMultipleChoiceField(required=False, queryset=Skill.objects.all().order_by('name'),
+                                                    widget=forms.SelectMultiple(attrs={'class': 'form-control'}))
+    location = forms.ModelChoiceField(required=False, queryset=Location.objects.all().order_by('country', 'state', 'city',
+                                                                                               'local_address'),
                                       widget=forms.Select(attrs={'class': 'form-control'}))
-    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all().order_by('tag'),
-                                                     widget=forms.SelectMultiple(attrs={'class': 'form-control'}))
-    description = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    project_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    tags = forms.ModelMultipleChoiceField(required=False, queryset=Tag.objects.all().order_by('tag'), to_field_name='tag',
+                                          widget=forms.SelectMultiple(attrs={'class': 'form-control'}))
+    description = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    project_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))

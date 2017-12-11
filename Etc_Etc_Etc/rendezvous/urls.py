@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'project/$', views.ProjectListView.as_view(), name='project-list'),
     url(r'user/$', views.ProfileListView.as_view(), name='user-list'),
     url(r'user/(?P<id>[\d\w]+)/$', views.profile, name='view-user-profile'),
-    url(r'advanced-search/', views.search, name='advanced-search',),
-    url(r'user/(?P<pk>[-\w]+)/update/$', views.ProfileUpdate.as_view(), name='edit-profile-user')
+    url(r'advanced-search$', views.search_form_request, name='advanced-search',),
+    url(r'advanced-search/results', views.search_results, name='search-results'),
+    url(r'user/?(?P<pk>[-\w]+)/update/$', views.ProfileUpdate.as_view(), name='edit-profile-user')
   
 ]
