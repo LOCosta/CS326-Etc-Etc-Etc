@@ -4,13 +4,11 @@
 }
 
 body {
-    font-family: bodyfont;
     background-color: whitesmoke;
     padding-top: 65px;
 }
 
 h2 {
-    font-family: bodyfont;
     margin-bottom: 30px;
     color: whitesmoke;
 }
