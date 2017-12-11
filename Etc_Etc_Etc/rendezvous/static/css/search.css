@@ -15,6 +15,10 @@ h2 {
     color: whitesmoke;
 }
 
+h3 {
+    color: whitesmoke;
+}
+
 .checkbox {
     font-size: 13px;
     color: whitesmoke;
@@ -47,6 +51,7 @@ h2 {
     padding: 10px;
     border: 3px solid lightsteelblue;
     border-radius: 6px;
+    height: 240px;
 }
 
 .proj-result img {
@@ -97,4 +102,8 @@ h2 {
 
 .proj-result p small a:hover {
     color: darkblue;
+}
+
+.fieldWrapper {
+    color: whitesmoke;
 }
