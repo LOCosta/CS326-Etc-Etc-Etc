@@ -37,7 +37,7 @@
                                         <span class="glyphicon glyphicon-arrow-left"></span></a>
                                 {% endif %}
                                 <button type="button" class="btn btn-primary disabled">{{ project_page.number }} of {{ project_page.paginator.num_pages }}</button>
-                                {% if project_page.has_previous %}
+                                {% if project_page.has_next %}
                                     <a class="btn btn-default" role="button" href="{{ request.path }}?page={{ project_page.next_page_number }}"><span class="glyphicon glyphicon-arrow-right"></span></a>
                                 {% endif %}
                             </div>
