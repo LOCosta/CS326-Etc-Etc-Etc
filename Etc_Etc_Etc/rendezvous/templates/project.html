@@ -18,14 +18,14 @@
             {% endif %}
         </div>
         <p><b>Project Name:</b> {{ proj_name }}</p>
-        <p><b>Project Creator:</b> {{ proj_creator.name }}</p>
+        <p><b>Project Creator:</b> <a href="{{ proj_creator.get_absolute_url }}">{{ proj_creator.name }}</a></p>
         <p><b>Project Description:</b></p>
         <p>{{ proj_description }}</p>
         <p><b>Participants:</b></p>
         {% if proj_contributors %}
           <ul>
             {% for user in proj_contributors %}
-              <li>{{ user.name }}</li>
+              <li><a href="{{ user.get_absolute_url }}">{{ user.name }}</a></li>
             {% endfor %}
           </ul>
         {% else %}
