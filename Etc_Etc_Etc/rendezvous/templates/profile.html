@@ -37,7 +37,7 @@
               {% for project in proj_created %}
                 <div class="container">
                   <img class="project-im" src="{% static  'img/image-placeholder-500x500.jpg' %}">
-                  <h4 class="project-name">{{ project.name }}</h4>
+                  <h4 class="project-name"><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></h4>
                   {% if project.date_completed %}
                     <h5><em>completed {{ project.date_completed }}</em></h5>
                   {% else %}
@@ -56,7 +56,7 @@
               {% for project in proj_contributed %}
                 <div class="container">
                   <img class="project-im" src="{% static  'img/image-placeholder-500x500.jpg' %}">
-                  <h4 class="project-name">{{ project.name }}</h4>
+                  <h4 class="project-name"><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></h4>
                   {% if project.date_completed %}
                     <h5><em>{{ project.date_completed }}</em></h5>
                   {% else %}
